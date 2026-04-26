@@ -1,0 +1,166 @@
+---
+const galleryItems = [
+  { src: '/images/farm-1.jpg', title: 'Naše kone', description: 'Voľne pasúce sa na lúkach' },
+  { src: '/images/farm-2.jpg', title: 'Kozy na farme', description: 'Tradičný chov v prírodnom prostredí' },
+  { src: '/images/farm-3.jpg', title: 'Farma z vtáčej perspektívy', description: 'Krásne prostredie Poník' },
+  { src: '/images/farm-4.jpg', title: 'Záchrana zvierat', description: 'Starostlivosť o zvieratá v núdzi' },
+  { src: '/images/farm-5.jpg', title: 'Príroda okolo nás', description: 'Horské lúky a lesy' },
+  { src: '/images/farm-6.jpg', title: 'Život na farme', description: 'Každodenná práca a radosť' },
+  { src: '/images/farm-7.jpg', title: 'Naše zvieratá', description: 'Láska k zvieratám' },
+  { src: '/images/farm-8.jpg', title: 'Folklórne tradície', description: 'Spojenie s kultúrou nášho kraja' },
+];
+---
+
+<section class="py-20 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-brown mb-4">
+        Z nášho života
+      </h2>
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px w-12 bg-gold"></div>
+        <div class="w-3 h-3 bg-gold rotate-45"></div>
+        <div class="h-px w-12 bg-gold"></div>
+      </div>
+      <p class="text-lg text-brown-light max-w-2xl mx-auto">
+        Momentky z každodenného života na našej farme
+      </p>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {galleryItems.map((item, index) => (
+        <button
+          class={`group relative aspect-square rounded-2xl overflow-hidden border border-gold/20 hover:border-gold/50 transition-all duration-300 hover:shadow-xl cursor-pointer ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+          onclick={`openLightbox(${index})`}
+          aria-label={`Zobraziť: ${item.title}`}
+        >
+          <!-- Image -->
+          <img
+            src={item.src}
+            alt={item.title}
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+          />
+          
+          <!-- Overlay on hover -->
+          <div class="absolute inset-0 bg-gradient-to-t from-brown/70 via-brown/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+            <div>
+              <h3 class="font-heading text-lg font-bold text-cream">{item.title}</h3>
+              <p class="text-sm text-cream/80">{item.description}</p>
+            </div>
+          </div>
+
+          <!-- Corner decoration -->
+          <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-gold/30 group-hover:border-gold/60 transition-colors duration-300 rounded-tr-sm"></div>
+          <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-gold/30 group-hover:border-gold/60 transition-colors duration-300 rounded-bl-sm"></div>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox modal -->
+<div id="lightbox" class="fixed inset-0 z-50 bg-brown/95 hidden items-center justify-center p-4" onclick="closeLightbox(event)">
+  <!-- Close button -->
+  <button
+    class="absolute top-6 right-6 text-cream/80 hover:text-cream transition-colors z-10"
+    onclick="closeLightbox(event)"
+    aria-label="Zavrieť"
+  >
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Previous button -->
+  <button
+    class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-cream/60 hover:text-cream transition-colors z-10"
+    onclick="event.stopPropagation(); navigateLightbox(-1)"
+    aria-label="Predchádzajúca fotka"
+  >
+    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Next button -->
+  <button
+    class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-cream/60 hover:text-cream transition-colors z-10"
+    onclick="event.stopPropagation(); navigateLightbox(1)"
+    aria-label="Ďalšia fotka"
+  >
+    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Image container -->
+  <div class="relative max-w-5xl max-h-[85vh] w-full flex items-center justify-center" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" />
+    <div id="lightbox-caption" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brown/80 to-transparent p-6 rounded-b-lg">
+      <h3 id="lightbox-title" class="font-heading text-xl font-bold text-cream"></h3>
+      <p id="lightbox-desc" class="text-sm text-cream/80 mt-1"></p>
+    </div>
+  </div>
+
+  <!-- Counter -->
+  <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-cream/60 text-sm font-medium"></div>
+</div>
+
+<script is:inline>
+  const galleryData = [
+    { src: '/images/farm-1.jpg', title: 'Naše kone', description: 'Voľne pasúce sa na lúkach' },
+    { src: '/images/farm-2.jpg', title: 'Kozy na farme', description: 'Tradičný chov v prírodnom prostredí' },
+    { src: '/images/farm-3.jpg', title: 'Farma z vtáčej perspektívy', description: 'Krásne prostredie Poník' },
+    { src: '/images/farm-4.jpg', title: 'Záchrana zvierat', description: 'Starostlivosť o zvieratá v núdzi' },
+    { src: '/images/farm-5.jpg', title: 'Príroda okolo nás', description: 'Horské lúky a lesy' },
+    { src: '/images/farm-6.jpg', title: 'Život na farme', description: 'Každodenná práca a radosť' },
+    { src: '/images/farm-7.jpg', title: 'Naše zvieratá', description: 'Láska k zvieratám' },
+    { src: '/images/farm-8.jpg', title: 'Folklórne tradície', description: 'Spojenie s kultúrou nášho kraja' },
+  ];
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('hidden');
+    lb.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(event) {
+    if (event) event.stopPropagation();
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(direction) {
+    currentIndex = (currentIndex + direction + galleryData.length) % galleryData.length;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    const item = galleryData[currentIndex];
+    document.getElementById('lightbox-img').src = item.src;
+    document.getElementById('lightbox-img').alt = item.title;
+    document.getElementById('lightbox-title').textContent = item.title;
+    document.getElementById('lightbox-desc').textContent = item.description;
+    document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${galleryData.length}`;
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    const lb = document.getElementById('lightbox');
+    if (lb.classList.contains('hidden')) return;
+    
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+</script>

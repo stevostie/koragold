@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FolkBorder from '../components/FolkBorder.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Gallery from '../components/Gallery.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout title="FARMA KORAGOLD-ABM | Poniky">
+  <!-- Top folk border -->
+  <FolkBorder position="top" />
+
+  <!-- Hero section -->
+  <Hero />
+
+  <!-- Bottom folk border after hero -->
+  <FolkBorder position="bottom" />
+
+  <!-- About section -->
+  <About />
+
+  <!-- Folk divider -->
+  <FolkBorder position="top" />
+
+  <!-- Gallery section -->
+  <Gallery />
+
+  <!-- Folk divider -->
+  <FolkBorder position="bottom" />
+
+  <!-- Contact section -->
+  <Contact />
+
+  <!-- Footer with folk border -->
+  <FolkBorder position="top" />
+  
+  <!-- Footer -->
+  <footer class="bg-primary py-8 px-6 text-center">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-heading text-xl text-cream font-bold mb-2">
+        FARMA KORAGOLD-ABM
+      </p>
+      <p class="text-cream/70 text-sm mb-4">
+        Rodinná farma v srdci Poník
+      </p>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px w-8 bg-cream/30"></div>
+        <div class="w-2 h-2 bg-gold rotate-45"></div>
+        <div class="h-px w-8 bg-cream/30"></div>
+      </div>
+      <p class="text-cream/50 text-xs">
+        &copy; {new Date().getFullYear()} FARMA KORAGOLD-ABM. Všetky práva vyhradené.
+      </p>
+    </div>
+  </footer>
+</Layout>
