@@ -1,0 +1,43 @@
+---
+---
+
+<!-- Sticky CTA bar - visible on scroll -->
+<div id="cta-bar" class="fixed bottom-0 left-0 right-0 z-50 bg-brown/95 backdrop-blur-sm border-t border-gold/30 transform translate-y-full transition-transform duration-300">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <div class="hidden sm:block">
+      <p class="text-white font-heading text-lg font-bold">FARMA KORAGOLD-ABM</p>
+      <p class="text-gold-light text-sm">Poniky • Jazdecké zážitky</p>
+    </div>
+    <div class="flex items-center gap-3 w-full sm:w-auto">
+      <a href="tel:+421TODO" class="flex-1 sm:flex-none text-center py-2 px-6 bg-gold text-white rounded-full font-medium hover:bg-gold-dark transition-colors text-sm" data-todo="doplniť telefónne číslo">
+        📞 Zavolať
+      </a>
+      <a href="#kontakt" class="flex-1 sm:flex-none text-center py-2 px-6 border border-gold/50 text-gold-light rounded-full font-medium hover:bg-gold/10 transition-colors text-sm">
+        Kontakt
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Show CTA bar after scrolling past hero
+  const ctaBar = document.getElementById('cta-bar');
+  if (ctaBar) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          ctaBar.classList.remove('translate-y-full');
+        } else {
+          ctaBar.classList.add('translate-y-full');
+        }
+      },
+      { threshold: 0 }
+    );
+    
+    // Observe the hero section
+    const hero = document.getElementById('hero');
+    if (hero) {
+      observer.observe(hero);
+    }
+  }
+</script>

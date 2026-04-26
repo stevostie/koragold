@@ -1,0 +1,60 @@
+P0 — opravy z v1, ktoré neboli urobené
+1. Odstráň prázdnu kartu v galérii (POVINNÉ)
+V sekcii „Z nášho života" je medzi položkou „Folklórne tradície" a sekciou „Kontakt & Lokalita" prázdna karta:
+
+<img src=""> (alebo s prázdnym src)
+prázdny <h3></h3> bez textu
+
+Akcia: Úplne ju zmaž z DOM/template/CMS collection. Toto NIE JE prijateľné nechať v ďalšom kole.
+2. Vyrieš image mapping konflikt
+Súbor farm-2.jpg je teraz použitý naraz na DVOCH miestach s nezhodným popisom:
+
+About sekcia → karta „Chov koní" → farm-2.jpg
+Galéria → dlaždica „Kozy na farme" → farm-2.jpg
+
+Tá istá fotka nemôže byť kôň aj koza. Otvor /public/images/farm-2.jpg a podľa skutočného obsahu:
+
+Ak je to kôň → v galérii nahraď farm-2.jpg iným zdrojom (napr. kozy.jpg, ak existuje samostatne, alebo iný snímok kôz).
+Ak je to koza → v About karte „Chov koní" použi iný snímok s koňmi (napr. farm-1.jpg).
+
+Skontroluj zároveň, či sa žiadny iný obrázok nepoužíva v dvoch nesúvisiacich kontextoch.
+P1 — nové bugy v pridanom obsahu
+3. Gramatika v About sekcii
+Karta „Chov koní" — text:
+
+„Naši koní sú súčasťou rodiny."
+
+Oprav na:
+
+„Naše kone sú súčasťou rodiny."
+
+(koní je genitív, v nominatíve plurálu je kone.)
+4. Preklep v sekcii „Náš príbeh"
+Tretí odstavec obsahuje:
+
+„...zvierat, ktoré potrebuju nový domov."
+
+Oprav na: potrebujú (s dĺžňom).
+5. Eliminácia repetície (z v1, stále nedokončené)
+Fráza „Rodinná farma budovaná s láskou k prírode a zvieratám" je v hero aj v intro odstavci sekcie „O našej farme" takmer doslova. Nechaj v hero, intro v About preformuluj — napr.:
+
+„V Ponikoch budujeme miesto, kde tradičný chov ide ruka v ruke s rešpektom k zvieratám a krajine. Stretneš tu kone, kozy aj zachránených tvorov, o ktorých sa staráme ako o rodinu."
+
+(Slovenčina, prirodzený tón, žiadne korporátne klišé.)
+Zníž výskyt „tradícia/tradičný" v celom dokumente — ponechaj max 2× (napr. v hero a v jednej karte). Inde nahraď synonymom („overený postup", „pôvodný spôsob") alebo úplne vyhoď.
+Akceptačné kritériá v2
+
+ Galéria neobsahuje žiadnu prázdnu kartu (manuálna kontrola DOM po builde).
+ farm-2.jpg (a každý iný obrázok) sa nevyskytuje v dvoch nesúvisiacich kontextoch.
+ „Naše kone" namiesto „Naši koní" v About.
+ „potrebujú" namiesto „potrebuju" v Príbehu.
+ Fráza „rodinná farma budovaná s láskou..." sa vyskytuje len raz v celom HTML.
+ „tradícia/tradičný" max 2× v celom HTML (overiť grep -i "tradi" dist/index.html).
+
+Workflow
+Jeden commit: fix(content): v2 delta — empty gallery card, image mapping, copy fixes.
+Nasaď do CloudCannon preview a pošli URL.
+Ak narazíš na nejasnosť
+
+Neodhaduj obsah obrázkov — otvor súbor a pozri sa.
+Ak nevieš identifikovať, čo je na farm-2.jpg, NEMEŇ mapping a napíš to do PR description namiesto špekulácie.

@@ -3,11 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import FolkBorder from '../components/FolkBorder.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Story from '../components/Story.astro';
 import Gallery from '../components/Gallery.astro';
 import Contact from '../components/Contact.astro';
+import CtaBar from '../components/CtaBar.astro';
 ---
 
-<Layout title="FARMA KORAGOLD-ABM | Poniky">
+<Layout title="FARMA KORAGOLD-ABM | Rodinná farma v Ponikoch">
   <!-- Top folk border -->
   <FolkBorder position="top" />
 
@@ -19,6 +22,18 @@ import Contact from '../components/Contact.astro';
 
   <!-- About section -->
   <About />
+
+  <!-- Folk divider -->
+  <FolkBorder position="top" />
+
+  <!-- Services / Jazdecké zážitky -->
+  <Services />
+
+  <!-- Folk divider -->
+  <FolkBorder position="bottom" />
+
+  <!-- Náš príbeh -->
+  <Story />
 
   <!-- Folk divider -->
   <FolkBorder position="top" />
@@ -36,7 +51,7 @@ import Contact from '../components/Contact.astro';
   <FolkBorder position="top" />
   
   <!-- Footer -->
-  <footer class="bg-primary py-8 px-6 text-center">
+  <footer class="bg-brown py-8 px-6 text-center">
     <div class="max-w-4xl mx-auto">
       <p class="font-heading text-xl text-cream font-bold mb-2">
         FARMA KORAGOLD-ABM
@@ -54,4 +69,7 @@ import Contact from '../components/Contact.astro';
       </p>
     </div>
   </footer>
+
+  <!-- Sticky CTA bar -->
+  <CtaBar />
 </Layout>
