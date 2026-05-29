@@ -2,48 +2,52 @@
 ---
 
 <section id="hero" class="relative min-h-[94vh] flex items-center justify-center overflow-hidden">
-  <img src="/images/farm-1.jpg" alt="" class="absolute inset-0 w-full h-full object-cover animate-ken-burns" aria-hidden="true" />
-  <div class="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/55 to-ink/85"></div>
+  <img src="/images/hero.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async"
+       class="absolute inset-0 w-full h-full object-cover animate-ken-burns" />
+  <div class="absolute inset-0 bg-gradient-to-b from-ink/72 via-ink/60 to-ink/85"></div>
   <div class="absolute inset-4 md:inset-7 border border-label/20 pointer-events-none"></div>
 
-  <div class="relative z-10 text-center px-6 max-w-3xl mx-auto pt-20 pb-24">
+  <div class="relative z-10 text-center px-6 max-w-3xl mx-auto pt-24 pb-28">
     <div class="flex justify-center mb-7 opacity-0 animate-fade-in-up">
-      <img src="/images/logo-brand.png" alt="FARMA KORAGOLD-ABM, Poniky"
-           class="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl" />
+      <img src="/images/logo-brand.png" alt="Logo farmy KORAGOLD-ABM, Poniky" width="160" height="160"
+           class="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 drop-shadow-2xl" />
     </div>
 
     <p class="eyebrow text-wheat text-xs md:text-sm mb-4 opacity-0 animate-fade-in-up animation-delay-200">
       Rodinná farma na Ponikoch
     </p>
 
-    <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-cream mb-5 leading-[1.1] opacity-0 animate-fade-in-up animation-delay-200 drop-shadow">
+    <h1 class="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-cream mb-5 leading-[1.12] opacity-0 animate-fade-in-up animation-delay-200 drop-shadow">
       Život v súlade<br/>s prírodou a zvieratami
     </h1>
 
-    <p class="font-body text-lg md:text-xl text-cream/85 mb-9 max-w-xl mx-auto leading-relaxed opacity-0 animate-fade-in-up animation-delay-400">
+    <p class="font-body text-base sm:text-lg md:text-xl text-cream/90 mb-9 max-w-xl mx-auto leading-relaxed opacity-0 animate-fade-in-up animation-delay-400">
       Jazdy na koňoch pre celú rodinu, poctivé kozie produkty a domov pre zachránené zvieratá —
       v srdci Banskobystrického kraja.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up animation-delay-600">
       <a href="tel:+421950466433"
-         class="btn-vintage bg-wine hover:bg-wine-dark text-cream py-4 px-8 text-base shadow-lg hover:scale-105">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         class="hero-btn btn-vintage bg-wine hover:bg-wine-dark text-cream py-4 px-8 text-base shadow-lg hover:scale-105 w-full sm:w-auto">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
         </svg>
         Zavolať
       </a>
       <a href="#jazdy"
-         class="btn-vintage border-2 border-cream/40 hover:border-wheat text-cream hover:text-wheat py-4 px-8 text-base hover:scale-105">
+         class="hero-btn btn-vintage border-2 border-cream/40 hover:border-wheat text-cream hover:text-wheat py-4 px-8 text-base hover:scale-105 w-full sm:w-auto">
         Naše jazdy
       </a>
     </div>
   </div>
 
-  <!-- organic transition into the page -->
   <div class="absolute bottom-0 left-0 right-0 leading-none" aria-hidden="true">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-[70px] md:h-[110px] block" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-[60px] md:h-[110px] block" xmlns="http://www.w3.org/2000/svg">
       <path fill="var(--color-cream)" d="M0,80 C220,30 460,110 740,80 C1000,54 1220,110 1440,70 L1440,120 L0,120 Z" />
     </svg>
   </div>
 </section>
+
+<style>
+  .hero-btn:focus-visible { outline: 2px solid var(--color-wheat); outline-offset: 3px; }
+</style>

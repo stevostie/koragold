@@ -1,33 +1,32 @@
 ---
 ---
 
-<div id="cta-bar" class="fixed bottom-0 left-0 right-0 z-40 bg-ink/95 backdrop-blur-sm border-t border-wheat/25 transform translate-y-full transition-transform duration-300">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-    <div class="hidden sm:block">
-      <p class="text-cream font-display font-bold tracking-wider text-sm">FARMA KORAGOLD-ABM</p>
-      <p class="text-wheat text-xs">Poniky · Jazdy a kozie produkty</p>
-    </div>
-    <div class="flex items-center gap-3 w-full sm:w-auto">
-      <a href="tel:+421950466433" class="btn-vintage flex-1 sm:flex-none py-2.5 px-6 bg-wine text-cream hover:bg-wine-dark text-sm">
-        Zavolať
-      </a>
-      <a href="#kontakt" class="btn-vintage flex-1 sm:flex-none py-2.5 px-6 border border-wheat/50 text-wheat hover:bg-wheat/10 text-sm">
-        Kontakt
-      </a>
-    </div>
+<!-- Mobile-only sticky CTA bar -->
+<div id="cta-bar" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-ink/95 backdrop-blur-sm border-t border-wheat/25 transform translate-y-full transition-transform duration-300">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+    <a href="tel:+421950466433" class="btn-vintage flex-1 py-2.5 px-4 bg-wine text-cream hover:bg-wine-dark text-sm cta-focus">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+      </svg>
+      Zavolať
+    </a>
+    <a href="#kontakt" class="btn-vintage flex-1 py-2.5 px-4 border border-wheat/50 text-wheat hover:bg-wheat/10 text-sm cta-focus">
+      Kontakt
+    </a>
   </div>
 </div>
+
+<style>
+  .cta-focus:focus-visible { outline: 2px solid var(--color-wheat); outline-offset: 2px; }
+</style>
 
 <script is:inline>
   const ctaBar = document.getElementById('cta-bar');
   if (ctaBar) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) {
-          ctaBar.classList.remove('translate-y-full');
-        } else {
-          ctaBar.classList.add('translate-y-full');
-        }
+        if (!entry.isIntersecting) ctaBar.classList.remove('translate-y-full');
+        else ctaBar.classList.add('translate-y-full');
       },
       { threshold: 0 }
     );
