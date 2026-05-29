@@ -1,0 +1,58 @@
+---
+import Badge from './Badge.astro';
+
+const links = [
+  { href: '#o-farme', label: 'O farme' },
+  { href: '#jazdy', label: 'Jazdy na koňoch' },
+  { href: '#produkty', label: 'Kozie produkty' },
+  { href: '#pribeh', label: 'Príbeh' },
+  { href: '#galeria', label: 'Galéria' },
+  { href: '#kontakt', label: 'Kontakt' },
+];
+---
+
+<header id="site-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent">
+  <nav class="max-w-6xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="#hero" class="flex items-center gap-3 group">
+      <Badge class="w-10 h-10 md:w-12 md:h-12 shrink-0" />
+      <span class="leading-tight">
+        <span class="block font-display font-extrabold tracking-wider text-ink text-sm md:text-base">KORAGOLD-ABM</span>
+        <span class="block font-display text-[10px] md:text-xs tracking-[0.25em] text-wine">FARMA · PONIKY</span>
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden lg:flex items-center gap-7">
+      {links.map((l) => (
+        <a href={l.href} class="font-body text-sm text-ink-soft hover:text-wine transition-colors">{l.label}</a>
+      ))}
+    </div>
+
+    <!-- Phone CTA -->
+    <a href="tel:+421950466433"
+       class="btn-vintage bg-wine hover:bg-wine-dark text-cream text-xs md:text-sm py-2.5 px-4 md:px-5 shadow-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+      </svg>
+      <span class="hidden sm:inline">0950 466 433</span>
+      <span class="sm:hidden">Volať</span>
+    </a>
+  </nav>
+</header>
+
+<script is:inline>
+  const nav = document.getElementById('site-nav');
+  const onScroll = () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('bg-cream/95', 'backdrop-blur-sm', 'shadow-sm');
+      nav.classList.remove('border-transparent');
+      nav.classList.add('border-ink/10');
+    } else {
+      nav.classList.remove('bg-cream/95', 'backdrop-blur-sm', 'shadow-sm', 'border-ink/10');
+      nav.classList.add('border-transparent');
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

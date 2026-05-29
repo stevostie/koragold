@@ -3,60 +3,51 @@ const features = [
   {
     image: '/images/farm-2.jpg',
     title: 'Chov koní',
+    accent: 'wine',
     description: 'Naše kone sú súčasťou rodiny. Staráme sa o ne s láskou a ponúkame jazdecké zážitky v krásnom prostredí Poník.'
   },
   {
     image: '/images/kozy.jpg',
     title: 'Chov kôz',
-    description: 'Naše kozy nám dávajú mlieko a radosť. Chováme ich tradičným spôsobom v súlade s prírodou.'
+    accent: 'sage',
+    description: 'Naše kozy nám dávajú mlieko aj radosť. Chováme ich pôvodným spôsobom v súlade s prírodou.'
   },
   {
     image: '/images/farm-5.jpg',
     title: 'Záchrana zvierat',
+    accent: 'wheat',
     description: 'Pomáhame zvieratám v núdzi. Každé zviera si zaslúži láskavý domov a starostlivosť.'
   }
 ];
+const bar = { wine: 'bg-wine', sage: 'bg-sage', wheat: 'bg-wheat' };
 ---
 
-<section class="py-20 px-6 bg-cream">
+<section id="o-farme" class="py-20 md:py-24 px-6">
   <div class="max-w-6xl mx-auto">
-    <!-- Section header -->
-    <div class="text-center mb-16">
-      <h2 class="font-heading text-4xl md:text-5xl font-bold text-brown mb-4">
-        O našej farme
-      </h2>
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <div class="h-px w-12 bg-gold"></div>
-        <div class="w-3 h-3 bg-gold rotate-45"></div>
-        <div class="h-px w-12 bg-gold"></div>
+    <div class="text-center mb-14">
+      <p class="eyebrow text-wine text-xs mb-3">Vitajte u nás</p>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-ink mb-5">O našej farme</h2>
+      <div class="stamp-divider text-wheat-dark mb-6">
+        <span class="rule"></span><span class="dot"></span><span class="rule"></span>
       </div>
-      <p class="text-lg text-brown-light max-w-2xl mx-auto">
-        Na Ponikoch budujeme miesto, kde tradičný chov ide ruka v ruke s rešpektom k zvieratám a krajine. Nájdete tu kone, kozy aj zachránené zvieratá, o ktoré sa staráme ako o rodinu.
+      <p class="text-lg text-ink-soft max-w-2xl mx-auto leading-relaxed">
+        Na Ponikoch budujeme miesto, kde pôvodný chov ide ruka v ruke s rešpektom k zvieratám a krajine.
+        Nájdete tu kone, kozy aj zachránené zvieratá, o ktoré sa staráme ako o rodinu.
       </p>
     </div>
 
-    <!-- Feature cards -->
     <div class="grid md:grid-cols-3 gap-8">
       {features.map((feature) => (
-        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gold/20 group">
-          <div class="relative h-48 overflow-hidden">
-            <img
-              src={feature.image}
-              alt={feature.title}
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-brown/30 to-transparent"></div>
+        <div class="bg-cream-card rounded-lg overflow-hidden border border-ink/15 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+          <div class="relative h-52 overflow-hidden">
+            <img src={feature.image} alt={feature.title}
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent"></div>
           </div>
-          <div class="p-8">
-          <h3 class="font-heading text-2xl font-bold text-brown mb-3">
-            {feature.title}
-          </h3>
-          <p class="text-brown-light leading-relaxed">
-            {feature.description}
-          </p>
-          <!-- Decorative bottom border -->
-          <div class="mt-6 h-1 w-16 bg-gradient-to-r from-gold to-primary rounded-full"></div>
+          <div class="p-7">
+            <h3 class="font-heading text-2xl font-bold text-ink mb-3">{feature.title}</h3>
+            <p class="text-ink-soft leading-relaxed">{feature.description}</p>
+            <div class={`mt-6 h-1 w-14 rounded-full ${bar[feature.accent]}`}></div>
           </div>
         </div>
       ))}

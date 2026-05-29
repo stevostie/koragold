@@ -1,50 +1,13 @@
 ---
-interface Props {
-  position?: 'top' | 'bottom';
-}
-
-const { position = 'top' } = Astro.props;
+// Subtle vintage divider — a thin centred ornament, not a full-width band
 ---
 
-<div class={`relative w-full overflow-hidden ${position === 'bottom' ? 'rotate-180' : ''}`} aria-hidden="true">
-  <svg class="w-full h-8 md:h-10" viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Base line -->
-    <line x1="0" y1="20" x2="1200" y2="20" stroke="#C8A84E" stroke-width="1.5" opacity="0.6" />
-    
-    <!-- Repeating diamond pattern -->
-    <g fill="#C8A84E" opacity="0.8">
-      <!-- Diamonds -->
-      <polygon points="50,10 60,20 50,30 40,20" />
-      <polygon points="150,10 160,20 150,30 140,20" />
-      <polygon points="250,10 260,20 250,30 240,20" />
-      <polygon points="350,10 360,20 350,30 340,20" />
-      <polygon points="450,10 460,20 450,30 440,20" />
-      <polygon points="550,10 560,20 550,30 540,20" />
-      <polygon points="650,10 660,20 650,30 640,20" />
-      <polygon points="750,10 760,20 750,30 740,20" />
-      <polygon points="850,10 860,20 850,30 840,20" />
-      <polygon points="950,10 960,20 950,30 940,20" />
-      <polygon points="1050,10 1060,20 1050,30 1040,20" />
-      <polygon points="1150,10 1160,20 1150,30 1140,20" />
-    </g>
-    
-    <!-- Small dots between diamonds -->
-    <g fill="#C8A84E" opacity="0.5">
-      <circle cx="100" cy="20" r="2" />
-      <circle cx="200" cy="20" r="2" />
-      <circle cx="300" cy="20" r="2" />
-      <circle cx="400" cy="20" r="2" />
-      <circle cx="500" cy="20" r="2" />
-      <circle cx="600" cy="20" r="2" />
-      <circle cx="700" cy="20" r="2" />
-      <circle cx="800" cy="20" r="2" />
-      <circle cx="900" cy="20" r="2" />
-      <circle cx="1000" cy="20" r="2" />
-      <circle cx="1100" cy="20" r="2" />
-    </g>
-    
-    <!-- Top and bottom accent lines -->
-    <line x1="0" y1="5" x2="1200" y2="5" stroke="#C8A84E" stroke-width="0.5" opacity="0.3" />
-    <line x1="0" y1="35" x2="1200" y2="35" stroke="#C8A84E" stroke-width="0.5" opacity="0.3" />
-  </svg>
+<div class="flex items-center justify-center py-2" aria-hidden="true">
+  <div class="flex items-center gap-3 text-ink/35">
+    <span class="h-px w-16 md:w-24 bg-current"></span>
+    <svg class="w-6 h-6 text-wine/70" viewBox="0 0 24 24" fill="currentColor">
+      <rect x="9.5" y="9.5" width="5" height="5" transform="rotate(45 12 12)" />
+    </svg>
+    <span class="h-px w-16 md:w-24 bg-current"></span>
+  </div>
 </div>

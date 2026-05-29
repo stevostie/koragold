@@ -1,25 +1,44 @@
 @import "tailwindcss";
+@import "@fontsource/cinzel/600.css";
+@import "@fontsource/cinzel/700.css";
+@import "@fontsource/cinzel/800.css";
 @import "@fontsource/playfair-display/400.css";
 @import "@fontsource/playfair-display/700.css";
 @import "@fontsource/playfair-display/400-italic.css";
 @import "@fontsource/lora/400.css";
+@import "@fontsource/lora/500.css";
 @import "@fontsource/lora/700.css";
 @import "@fontsource/lora/400-italic.css";
 
 @theme {
-  --color-gold: #C8A84E;
-  --color-gold-light: #E8D48B;
-  --color-gold-dark: #8B6914;
-  --color-primary: #8B6F47;
-  --color-primary-dark: #6B5535;
-  --color-accent: #D4A574;
-  --color-green-folk: #6B8E23;
-  --color-green-light: #8FB996;
-  --color-cream: #FAF6EE;
-  --color-brown: #2D2419;
-  --color-brown-light: #7A6555;
-  --color-earth: #C4956A;
+  /* --- New vintage-label palette (derived from the KORAGOLD-ABM stamp) --- */
+  --color-ink: #2B2722;          /* charcoal ink from the logo */
+  --color-ink-soft: #574C3F;     /* softened ink for body text */
+  --color-label: #E4D6B3;        /* warm beige inside the badge */
+  --color-cream: #EFE6CE;        /* page background (aged paper) */
+  --color-cream-card: #F8F2E2;   /* card surface */
 
+  --color-wine: #8A3A33;         /* burgundy accent (the thin red ring) */
+  --color-wine-dark: #6C2A24;
+  --color-sage: #6E7355;         /* complementary olive-green */
+  --color-sage-dark: #545840;
+  --color-wheat: #C2A05B;        /* muted wheat gold */
+  --color-wheat-dark: #9C7E3F;
+
+  /* --- Legacy token names remapped to the new palette (keeps old classes coherent) --- */
+  --color-gold: #C2A05B;
+  --color-gold-light: #D9BE84;
+  --color-gold-dark: #9C7E3F;
+  --color-primary: #8A3A33;
+  --color-primary-dark: #6C2A24;
+  --color-accent: #B07A4F;
+  --color-green-folk: #6E7355;
+  --color-green-light: #8A8F6E;
+  --color-brown: #2B2722;
+  --color-brown-light: #574C3F;
+  --color-earth: #B07A4F;
+
+  --font-display: 'Cinzel', Georgia, serif;
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Lora', Georgia, serif;
 }
@@ -31,32 +50,61 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--color-cream);
-  color: var(--color-brown);
+  color: var(--color-ink);
+  /* very subtle aged-paper grain */
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(138, 58, 51, 0.025) 0, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(110, 115, 85, 0.03) 0, transparent 45%);
 }
 
-/* Folk ornament SVG pattern for borders */
-.folk-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M20 0c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm0 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm20-8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm0 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm20-8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm0 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm20-8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm0 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z'/%3E%3Cpath d='M0 20h80M0 28h80' stroke='%23ffffff' stroke-opacity='0.2' stroke-width='1'/%3E%3Cpath d='M10 20l5 4-5 4M30 20l5 4-5 4M50 20l5 4-5 4M70 20l5 4-5 4' fill='none' stroke='%23ffffff' stroke-opacity='0.4' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-size: 80px 40px;
+/* Vintage stamp eyebrow (small caps label above headings) */
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+}
+
+/* Stamp divider — thin double rule with a central diamond, echoes the badge rings */
+.stamp-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.stamp-divider .rule {
+  height: 1px;
+  width: 3rem;
+  background: currentColor;
+  opacity: 0.5;
+}
+.stamp-divider .dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  background: currentColor;
+}
+
+/* Vintage button */
+.btn-vintage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  border-radius: 0.4rem;
+  transition: all 0.25s ease;
 }
 
 /* Fade-in animation */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-600 { animation-delay: 0.6s; }
@@ -66,7 +114,4 @@ body {
   0% { transform: scale(1); }
   100% { transform: scale(1.1); }
 }
-
-.animate-ken-burns {
-  animation: kenBurns 20s ease-in-out infinite alternate;
-}
+.animate-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }

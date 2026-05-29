@@ -1,75 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FolkBorder from '../components/FolkBorder.astro';
+import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Services from '../components/Services.astro';
+import Products from '../components/Products.astro';
 import Story from '../components/Story.astro';
 import Gallery from '../components/Gallery.astro';
 import Contact from '../components/Contact.astro';
+import FolkBorder from '../components/FolkBorder.astro';
+import Badge from '../components/Badge.astro';
 import CtaBar from '../components/CtaBar.astro';
 ---
 
 <Layout title="FARMA KORAGOLD-ABM | Rodinná farma na Ponikoch">
-  <!-- Top folk border -->
-  <FolkBorder position="top" />
-
-  <!-- Hero section -->
+  <Nav />
   <Hero />
-
-  <!-- Bottom folk border after hero -->
-  <FolkBorder position="bottom" />
-
-  <!-- About section -->
   <About />
-
-  <!-- Folk divider -->
-  <FolkBorder position="top" />
-
-  <!-- Services / Jazdecké zážitky -->
+  <FolkBorder />
   <Services />
-
-  <!-- Folk divider -->
-  <FolkBorder position="bottom" />
-
-  <!-- Náš príbeh -->
+  <Products />
+  <FolkBorder />
   <Story />
-
-  <!-- Folk divider -->
-  <FolkBorder position="top" />
-
-  <!-- Gallery section -->
   <Gallery />
-
-  <!-- Folk divider -->
-  <FolkBorder position="bottom" />
-
-  <!-- Contact section -->
   <Contact />
 
-  <!-- Footer with folk border -->
-  <FolkBorder position="top" />
-  
-  <!-- Footer -->
-  <footer class="bg-brown py-8 px-6 text-center">
-    <div class="max-w-4xl mx-auto">
-      <p class="font-heading text-xl text-cream font-bold mb-2">
-        FARMA KORAGOLD-ABM
-      </p>
-      <p class="text-cream/70 text-sm mb-4">
-        Rodinná farma na Ponikoch
-      </p>
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="h-px w-8 bg-cream/30"></div>
-        <div class="w-2 h-2 bg-gold rotate-45"></div>
-        <div class="h-px w-8 bg-cream/30"></div>
+  <footer class="bg-ink py-12 px-6 text-center">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
+      <Badge class="w-20 h-20 mb-5" />
+      <p class="font-display text-xl tracking-wider text-cream font-extrabold mb-1">FARMA KORAGOLD-ABM</p>
+      <p class="text-wheat text-sm mb-5">Rodinná farma na Ponikoch</p>
+      <div class="flex items-center justify-center gap-3 mb-5">
+        <div class="h-px w-8 bg-cream/25"></div>
+        <div class="w-2 h-2 bg-wine rotate-45"></div>
+        <div class="h-px w-8 bg-cream/25"></div>
       </div>
-      <p class="text-cream/50 text-xs">
-        &copy; {new Date().getFullYear()} FARMA KORAGOLD-ABM. Všetky práva vyhradené.
-      </p>
+      <a href="tel:+421950466433" class="text-cream/80 hover:text-wheat transition-colors mb-4">0950 466 433 – Štefan</a>
+      <p class="text-cream/40 text-xs">© {new Date().getFullYear()} FARMA KORAGOLD-ABM. Všetky práva vyhradené.</p>
     </div>
   </footer>
 
-  <!-- Sticky CTA bar -->
   <CtaBar />
 </Layout>
