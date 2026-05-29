@@ -1,0 +1,26 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<!-- Decorative botanical sprig (wheat / leaves) -->
+<svg class={`sprig ${className}`} viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+    <path d="M60 200 C60 150 58 110 60 60" />
+    <path d="M60 70 C40 56 34 36 36 18" />
+    <path d="M60 70 C80 56 86 36 84 18" />
+    <path d="M60 110 C42 100 34 84 36 70" />
+    <path d="M60 110 C78 100 86 84 84 70" />
+    <path d="M60 150 C46 142 40 128 42 116" />
+    <path d="M60 150 C74 142 80 128 78 116" />
+  </g>
+  <g fill="currentColor">
+    <ellipse cx="38" cy="22" rx="5" ry="11" transform="rotate(28 38 22)" />
+    <ellipse cx="82" cy="22" rx="5" ry="11" transform="rotate(-28 82 22)" />
+    <ellipse cx="38" cy="72" rx="4.5" ry="10" transform="rotate(28 38 72)" />
+    <ellipse cx="82" cy="72" rx="4.5" ry="10" transform="rotate(-28 82 72)" />
+    <ellipse cx="60" cy="50" rx="5" ry="12" />
+  </g>
+</svg>

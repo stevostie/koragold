@@ -1,4 +1,6 @@
 ---
+import LeafSprig from './LeafSprig.astro';
+
 const rides = [
   {
     title: 'Krátka jazda',
@@ -24,9 +26,12 @@ const rides = [
 ];
 ---
 
-<section id="jazdy" class="py-20 md:py-24 px-6 bg-cream-card/60 border-y border-ink/10">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-10">
+<section id="jazdy" class="relative py-20 md:py-28 px-6 overflow-hidden">
+  <LeafSprig class="w-28 h-44 -left-6 top-10 rotate-12" />
+  <LeafSprig class="w-28 h-44 -right-6 bottom-10 -rotate-12 scale-x-[-1]" />
+
+  <div class="relative max-w-6xl mx-auto">
+    <div class="text-center mb-14">
       <p class="eyebrow text-wine text-xs mb-3">Zážitky v sedle</p>
       <h2 class="font-heading text-4xl md:text-5xl font-bold text-ink mb-5">Jazdy na koňoch</h2>
       <div class="stamp-divider text-wheat-dark mb-6">
@@ -37,19 +42,9 @@ const rides = [
       </p>
     </div>
 
-    <!-- Phone-only notice -->
-    <div class="max-w-2xl mx-auto mb-12 flex items-center justify-center gap-3 bg-wine/10 border border-wine/25 rounded-lg px-5 py-3 text-center">
-      <svg class="w-5 h-5 text-wine shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-      </svg>
-      <p class="text-sm md:text-base text-wine-dark">
-        Jazdy objednávame <strong>výhradne telefonicky</strong> — žiadny online rezervačný systém.
-      </p>
-    </div>
-
     <div class="grid md:grid-cols-3 gap-8">
       {rides.map((ride) => (
-        <div class={`relative bg-cream-card rounded-lg p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${ride.featured ? 'border-2 border-wine/40 shadow-md' : 'border border-ink/15'}`}>
+        <div class={`relative bg-cream-card rounded-xl p-8 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${ride.featured ? 'border-2 border-wine/40 shadow-md' : 'border border-ink/12 shadow-sm'}`}>
           {ride.featured && (
             <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-wine text-cream text-[11px] font-display tracking-widest uppercase px-4 py-1 rounded">
               Najobľúbenejšie
@@ -57,14 +52,16 @@ const rides = [
           )}
           <h3 class="font-heading text-2xl font-bold text-ink mb-3 mt-2">{ride.title}</h3>
           <p class="text-ink-soft mb-5 leading-relaxed">{ride.description}</p>
-          <div class="space-y-1.5 mb-6 text-sm text-ink-soft">
+          <div class="space-y-1.5 mb-7 text-sm text-ink-soft">
             <p><strong class="text-ink">Trvanie:</strong> {ride.duration}</p>
             <p><strong class="text-ink">Vhodné pre:</strong> {ride.forWhom}</p>
-            <p class="text-sage-dark font-medium pt-1">Cena po dohode telefonicky</p>
           </div>
           <a href="tel:+421950466433"
              class={`btn-vintage w-full py-3 text-sm ${ride.featured ? 'bg-wine hover:bg-wine-dark text-cream' : 'bg-ink hover:bg-wine text-cream'}`}>
-            Objednať telefonicky
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            Zavolať
           </a>
         </div>
       ))}

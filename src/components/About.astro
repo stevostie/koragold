@@ -1,4 +1,6 @@
 ---
+import LeafSprig from './LeafSprig.astro';
+
 const features = [
   {
     image: '/images/farm-2.jpg',
@@ -22,8 +24,10 @@ const features = [
 const bar = { wine: 'bg-wine', sage: 'bg-sage', wheat: 'bg-wheat' };
 ---
 
-<section id="o-farme" class="py-20 md:py-24 px-6">
-  <div class="max-w-6xl mx-auto">
+<section id="o-farme" class="relative py-16 md:py-24 px-6 overflow-hidden">
+  <LeafSprig class="w-24 h-40 right-2 top-6 -rotate-12" />
+
+  <div class="relative max-w-6xl mx-auto">
     <div class="text-center mb-14">
       <p class="eyebrow text-wine text-xs mb-3">Vitajte u nás</p>
       <h2 class="font-heading text-4xl md:text-5xl font-bold text-ink mb-5">O našej farme</h2>
@@ -38,8 +42,8 @@ const bar = { wine: 'bg-wine', sage: 'bg-sage', wheat: 'bg-wheat' };
 
     <div class="grid md:grid-cols-3 gap-8">
       {features.map((feature) => (
-        <div class="bg-cream-card rounded-lg overflow-hidden border border-ink/15 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
-          <div class="relative h-52 overflow-hidden">
+        <div class="bg-cream-card rounded-xl overflow-hidden border border-ink/12 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+          <div class="relative h-56 overflow-hidden">
             <img src={feature.image} alt={feature.title}
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent"></div>

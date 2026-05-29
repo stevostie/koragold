@@ -1,0 +1,19 @@
+---
+interface Props {
+  flip?: boolean;
+  class?: string;
+}
+const { flip = false, class: className = '' } = Astro.props;
+---
+
+<!-- Organic layered hills — natural landscape divider -->
+<div class={`relative w-full overflow-hidden leading-none ${flip ? 'rotate-180' : ''} ${className}`} aria-hidden="true">
+  <svg viewBox="0 0 1440 150" preserveAspectRatio="none" class="w-full h-[60px] md:h-[110px] block" xmlns="http://www.w3.org/2000/svg">
+    <path fill="var(--color-sage)" fill-opacity="0.22"
+      d="M0,90 C180,40 360,120 600,80 C840,40 1020,120 1260,70 C1350,52 1410,70 1440,80 L1440,150 L0,150 Z" />
+    <path fill="var(--color-wheat)" fill-opacity="0.28"
+      d="M0,110 C220,70 420,130 720,100 C1000,72 1180,128 1440,100 L1440,150 L0,150 Z" />
+    <path fill="var(--color-sage-dark)" fill-opacity="0.35"
+      d="M0,128 C260,104 520,140 820,124 C1080,110 1280,138 1440,126 L1440,150 L0,150 Z" />
+  </svg>
+</div>

@@ -8,8 +8,7 @@ import Products from '../components/Products.astro';
 import Story from '../components/Story.astro';
 import Gallery from '../components/Gallery.astro';
 import Contact from '../components/Contact.astro';
-import FolkBorder from '../components/FolkBorder.astro';
-import Badge from '../components/Badge.astro';
+import Hills from '../components/Hills.astro';
 import CtaBar from '../components/CtaBar.astro';
 ---
 
@@ -17,17 +16,17 @@ import CtaBar from '../components/CtaBar.astro';
   <Nav />
   <Hero />
   <About />
-  <FolkBorder />
+  <Hills />
   <Services />
   <Products />
-  <FolkBorder />
+  <Hills flip={true} />
   <Story />
   <Gallery />
   <Contact />
 
-  <footer class="bg-ink py-12 px-6 text-center">
-    <div class="max-w-4xl mx-auto flex flex-col items-center">
-      <Badge class="w-20 h-20 mb-5" />
+  <footer class="relative bg-ink py-14 px-6 text-center overflow-hidden">
+    <div class="relative max-w-4xl mx-auto flex flex-col items-center">
+      <img src="/images/logo-brand.png" alt="FARMA KORAGOLD-ABM" class="w-24 h-24 mb-5 drop-shadow" />
       <p class="font-display text-xl tracking-wider text-cream font-extrabold mb-1">FARMA KORAGOLD-ABM</p>
       <p class="text-wheat text-sm mb-5">Rodinná farma na Ponikoch</p>
       <div class="flex items-center justify-center gap-3 mb-5">

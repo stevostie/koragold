@@ -11,21 +11,21 @@
 @import "@fontsource/lora/400-italic.css";
 
 @theme {
-  /* --- New vintage-label palette (derived from the KORAGOLD-ABM stamp) --- */
-  --color-ink: #2B2722;          /* charcoal ink from the logo */
-  --color-ink-soft: #574C3F;     /* softened ink for body text */
-  --color-label: #E4D6B3;        /* warm beige inside the badge */
-  --color-cream: #EFE6CE;        /* page background (aged paper) */
-  --color-cream-card: #F8F2E2;   /* card surface */
+  --color-ink: #2B2722;
+  --color-ink-soft: #574C3F;
+  --color-label: #E4D6B3;
+  --color-cream: #F1E9D6;
+  --color-cream-card: #FBF6EA;
+  --color-cream-deep: #E9DFC6;
 
-  --color-wine: #8A3A33;         /* burgundy accent (the thin red ring) */
+  --color-wine: #8A3A33;
   --color-wine-dark: #6C2A24;
-  --color-sage: #6E7355;         /* complementary olive-green */
+  --color-sage: #6E7355;
   --color-sage-dark: #545840;
-  --color-wheat: #C2A05B;        /* muted wheat gold */
+  --color-wheat: #C2A05B;
   --color-wheat-dark: #9C7E3F;
 
-  /* --- Legacy token names remapped to the new palette (keeps old classes coherent) --- */
+  /* legacy names kept coherent */
   --color-gold: #C2A05B;
   --color-gold-light: #D9BE84;
   --color-gold-dark: #9C7E3F;
@@ -43,21 +43,22 @@
   --font-body: 'Lora', Georgia, serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-cream);
   color: var(--color-ink);
-  /* very subtle aged-paper grain */
+  background-color: var(--color-cream);
+  /* natural layered paper + soft organic light */
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(138, 58, 51, 0.025) 0, transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(110, 115, 85, 0.03) 0, transparent 45%);
+    radial-gradient(circle at 12% 8%, rgba(110, 115, 85, 0.06) 0, transparent 38%),
+    radial-gradient(circle at 88% 22%, rgba(194, 160, 91, 0.07) 0, transparent 40%),
+    radial-gradient(circle at 50% 95%, rgba(138, 58, 51, 0.04) 0, transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%236E7355' stroke-opacity='0.06' stroke-width='1.2'%3E%3Cpath d='M30 40 q12 -18 24 0 q-12 6 -24 0z'/%3E%3Cpath d='M42 40 v-20'/%3E%3Cpath d='M120 110 q14 -20 28 0 q-14 7 -28 0z'/%3E%3Cpath d='M134 110 v-22'/%3E%3Cpath d='M95 150 q10 -15 20 0 q-10 5 -20 0z'/%3E%3Cpath d='M105 150 v-16'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed, fixed, fixed, scroll;
 }
 
-/* Vintage stamp eyebrow (small caps label above headings) */
+/* vintage stamp eyebrow */
 .eyebrow {
   font-family: var(--font-display);
   text-transform: uppercase;
@@ -65,53 +66,26 @@ body {
   font-weight: 700;
 }
 
-/* Stamp divider — thin double rule with a central diamond, echoes the badge rings */
-.stamp-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-}
-.stamp-divider .rule {
-  height: 1px;
-  width: 3rem;
-  background: currentColor;
-  opacity: 0.5;
-}
-.stamp-divider .dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  transform: rotate(45deg);
-  background: currentColor;
-}
+/* small ornament divider */
+.stamp-divider { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+.stamp-divider .rule { height: 1px; width: 3rem; background: currentColor; opacity: 0.5; }
+.stamp-divider .dot { width: 0.5rem; height: 0.5rem; transform: rotate(45deg); background: currentColor; }
 
-/* Vintage button */
+/* vintage button */
 .btn-vintage {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  border-radius: 0.4rem;
-  transition: all 0.25s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.12em;
+  font-weight: 700; border-radius: 0.4rem; transition: all 0.25s ease;
 }
 
-/* Fade-in animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* decorative botanical sprig wrapper */
+.sprig { position: absolute; pointer-events: none; color: var(--color-sage); opacity: 0.13; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-600 { animation-delay: 0.6s; }
 
-/* Ken Burns effect for hero background */
-@keyframes kenBurns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-}
+@keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 .animate-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
