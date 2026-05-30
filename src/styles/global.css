@@ -49,14 +49,33 @@ body {
   font-family: var(--font-body);
   color: var(--color-ink);
   background-color: var(--color-cream);
-  /* natural layered paper + soft organic light */
   background-image:
     radial-gradient(circle at 12% 8%, rgba(110, 115, 85, 0.06) 0, transparent 38%),
     radial-gradient(circle at 88% 22%, rgba(194, 160, 91, 0.07) 0, transparent 40%),
-    radial-gradient(circle at 50% 95%, rgba(138, 58, 51, 0.04) 0, transparent 45%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%236E7355' stroke-opacity='0.06' stroke-width='1.2'%3E%3Cpath d='M30 40 q12 -18 24 0 q-12 6 -24 0z'/%3E%3Cpath d='M42 40 v-20'/%3E%3Cpath d='M120 110 q14 -20 28 0 q-14 7 -28 0z'/%3E%3Cpath d='M134 110 v-22'/%3E%3Cpath d='M95 150 q10 -15 20 0 q-10 5 -20 0z'/%3E%3Cpath d='M105 150 v-16'/%3E%3C/g%3E%3C/svg%3E");
-  background-attachment: fixed, fixed, fixed, scroll;
+    radial-gradient(circle at 50% 95%, rgba(138, 58, 51, 0.04) 0, transparent 45%);
+  background-attachment: fixed;
 }
+
+/* ---------- Themed section pictogram backgrounds ---------- */
+.pat { background-repeat: repeat; background-size: 118px 118px; }
+
+/* O farme – klások (wheat) */
+.pat-wheat { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%239C7E3F' stroke-opacity='0.18' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 56 V22'/%3E%3Cpath d='M32 22 C30 18 30 14 32 10 C34 14 34 18 32 22'/%3E%3Cpath d='M32 30 C26 26 24 20 25 15 M32 30 C38 26 40 20 39 15 M32 39 C26 35 24 29 25 24 M32 39 C38 35 40 29 39 24 M32 48 C27 45 25 40 26 36 M32 48 C37 45 39 40 38 36'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* Jazdy – podkova (horseshoe) */
+.pat-horse { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%236E7355' stroke-opacity='0.2' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M20 50 C12 40 12 20 32 16 C52 20 52 40 44 50'/%3E%3C/g%3E%3Cg fill='%236E7355' fill-opacity='0.2'%3E%3Ccircle cx='20' cy='50' r='2.4'/%3E%3Ccircle cx='44' cy='50' r='2.4'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* Produkty – fľaša mlieka (milk bottle) */
+.pat-milk { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23545840' stroke-opacity='0.18' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M27 15 H37 V21 L41 29 V45 A3 3 0 0 1 38 48 H26 A3 3 0 0 1 23 45 V29 L27 21 Z'/%3E%3Cpath d='M23 33 H41'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* Príbeh – srdce (heart) */
+.pat-heart { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%238A3A33' stroke-opacity='0.14' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M32 47 C18 37 16 27 21 22 C25 18 31 19 32 25 C33 19 39 18 43 22 C48 27 46 37 32 47 Z'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* Galéria – fotoaparát (camera) */
+.pat-camera { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%239C7E3F' stroke-opacity='0.17' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='16' y='24' width='32' height='22' rx='3'/%3E%3Cpath d='M27 24 L30 19 H34 L37 24'/%3E%3Ccircle cx='32' cy='35' r='6'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* Kontakt – špendlík (location pin) */
+.pat-pin { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='118' height='118' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%236E7355' stroke-opacity='0.18' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 15 C25 15 20 20 20 27 C20 36 32 49 32 49 C32 49 44 36 44 27 C44 20 39 15 32 15 Z'/%3E%3Ccircle cx='32' cy='27' r='4'/%3E%3C/g%3E%3C/svg%3E"); }
 
 /* vintage stamp eyebrow */
 .eyebrow {
@@ -92,4 +111,3 @@ body {
 
 /* global a11y focus */
 a:focus-visible, button:focus-visible { outline: 2px solid var(--color-wine); outline-offset: 2px; border-radius: 3px; }
-
