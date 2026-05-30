@@ -1,10 +1,12 @@
 ---
+import ScatterIcons from './ScatterIcons.astro';
 ---
 
 <section id="hero" class="relative min-h-[94vh] flex items-center justify-center overflow-hidden">
   <img src="/images/hero.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async"
        class="absolute inset-0 w-full h-full object-cover animate-ken-burns" />
   <div class="absolute inset-0 bg-gradient-to-b from-ink/72 via-ink/60 to-ink/85"></div>
+  <ScatterIcons type="wheat" color="var(--color-wheat)" behind={false} count={8} minOp={0.07} maxOp={0.12} />
   <div class="absolute inset-4 md:inset-7 border border-label/20 pointer-events-none"></div>
 
   <div class="relative z-10 text-center px-6 max-w-3xl mx-auto pt-24 pb-28">

@@ -2,8 +2,12 @@
 interface Props {
   type: 'wheat' | 'horse' | 'milk' | 'heart' | 'camera' | 'pin';
   count?: number;
+  behind?: boolean;     // true = za obsahom (-z-10), false = nad pozadím (z-0)
+  color?: string;       // prepísanie farby (napr. na tmavom pozadí)
+  minOp?: number;
+  maxOp?: number;
 }
-const { type, count = 7 } = Astro.props;
+const { type, count = 11, behind = true, color, minOp = 0.09, maxOp = 0.14 } = Astro.props;
 
 const ICONS: Record<string, string> = {
   wheat: '<path d="M32 56 V22"/><path d="M32 22 C30 18 30 14 32 10 C34 14 34 18 32 22"/><path d="M32 30 C26 26 24 20 25 15 M32 30 C38 26 40 20 39 15 M32 39 C26 35 24 29 25 24 M32 39 C38 35 40 29 39 24 M32 48 C27 45 25 40 26 36 M32 48 C37 45 39 40 38 36"/>',
@@ -23,25 +27,25 @@ const COLOR: Record<string, string> = {
   pin: 'var(--color-sage)',
 };
 
-// pseudo-random but stable per build
 const rnd = (min: number, max: number) => min + Math.random() * (max - min);
 const items = Array.from({ length: count }).map(() => ({
-  top: rnd(2, 90),
-  left: rnd(2, 92),
-  size: rnd(26, 74),
-  rot: rnd(-50, 50),
-  op: rnd(0.045, 0.085),
+  top: rnd(0, 92),
+  left: rnd(0, 92),
+  size: rnd(30, 90),
+  rot: rnd(-55, 55),
+  op: rnd(minOp, maxOp),
 }));
 const path = ICONS[type];
-const color = COLOR[type];
+const col = color ?? COLOR[type];
+const zCls = behind ? '-z-10' : 'z-0';
 ---
 
-<div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+<div class={`absolute inset-0 ${zCls} overflow-hidden pointer-events-none`} aria-hidden="true">
   {items.map((it) => (
     <svg
       viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round"
-      style={`position:absolute;top:${it.top}%;left:${it.left}%;width:${it.size}px;height:${it.size}px;transform:rotate(${it.rot}deg);opacity:${it.op};color:${color}`}
+      style={`position:absolute;top:${it.top}%;left:${it.left}%;width:${it.size}px;height:${it.size}px;transform:rotate(${it.rot}deg);opacity:${it.op};color:${col}`}
       set:html={path}
     />
   ))}
