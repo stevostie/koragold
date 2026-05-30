@@ -1,4 +1,5 @@
 ---
+import ScatterIcons from './ScatterIcons.astro';
 // Reálne produktové fotky doplň do public/images a nastav `photo`.
 // Kým je `photo` null, zobrazí sa zreteľný placeholder.
 const products = [
@@ -19,7 +20,8 @@ const products = [
 ];
 ---
 
-<section id="produkty" class="relative py-20 md:py-24 px-6 bg-cream-deep/50 overflow-hidden pat pat-milk">
+<section id="produkty" class="relative py-20 md:py-24 px-6 bg-cream-deep/50 overflow-hidden">
+  <ScatterIcons type="milk" />
   <div class="relative max-w-6xl mx-auto">
     <div class="text-center mb-14">
       <p class="eyebrow text-wine text-xs mb-3">Z kozej farmy</p>

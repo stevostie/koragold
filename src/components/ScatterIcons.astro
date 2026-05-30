@@ -1,0 +1,48 @@
+---
+interface Props {
+  type: 'wheat' | 'horse' | 'milk' | 'heart' | 'camera' | 'pin';
+  count?: number;
+}
+const { type, count = 7 } = Astro.props;
+
+const ICONS: Record<string, string> = {
+  wheat: '<path d="M32 56 V22"/><path d="M32 22 C30 18 30 14 32 10 C34 14 34 18 32 22"/><path d="M32 30 C26 26 24 20 25 15 M32 30 C38 26 40 20 39 15 M32 39 C26 35 24 29 25 24 M32 39 C38 35 40 29 39 24 M32 48 C27 45 25 40 26 36 M32 48 C37 45 39 40 38 36"/>',
+  horse: '<path d="M20 50 C12 40 12 20 32 16 C52 20 52 40 44 50"/>',
+  milk: '<path d="M27 15 H37 V21 L41 29 V45 A3 3 0 0 1 38 48 H26 A3 3 0 0 1 23 45 V29 L27 21 Z"/><path d="M23 33 H41"/>',
+  heart: '<path d="M32 47 C18 37 16 27 21 22 C25 18 31 19 32 25 C33 19 39 18 43 22 C48 27 46 37 32 47 Z"/>',
+  camera: '<rect x="16" y="24" width="32" height="22" rx="3"/><path d="M27 24 L30 19 H34 L37 24"/><circle cx="32" cy="35" r="6"/>',
+  pin: '<path d="M32 15 C25 15 20 20 20 27 C20 36 32 49 32 49 C32 49 44 36 44 27 C44 20 39 15 32 15 Z"/><circle cx="32" cy="27" r="4"/>',
+};
+
+const COLOR: Record<string, string> = {
+  wheat: 'var(--color-wheat-dark)',
+  horse: 'var(--color-sage)',
+  milk: 'var(--color-sage-dark)',
+  heart: 'var(--color-wine)',
+  camera: 'var(--color-wheat-dark)',
+  pin: 'var(--color-sage)',
+};
+
+// pseudo-random but stable per build
+const rnd = (min: number, max: number) => min + Math.random() * (max - min);
+const items = Array.from({ length: count }).map(() => ({
+  top: rnd(2, 90),
+  left: rnd(2, 92),
+  size: rnd(26, 74),
+  rot: rnd(-50, 50),
+  op: rnd(0.045, 0.085),
+}));
+const path = ICONS[type];
+const color = COLOR[type];
+---
+
+<div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+  {items.map((it) => (
+    <svg
+      viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round"
+      style={`position:absolute;top:${it.top}%;left:${it.left}%;width:${it.size}px;height:${it.size}px;transform:rotate(${it.rot}deg);opacity:${it.op};color:${color}`}
+      set:html={path}
+    />
+  ))}
+</div>

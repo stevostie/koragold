@@ -1,4 +1,5 @@
 ---
+import ScatterIcons from './ScatterIcons.astro';
 import LeafSprig from './LeafSprig.astro';
 
 const rides = [
@@ -26,7 +27,8 @@ const rides = [
 ];
 ---
 
-<section id="jazdy" class="relative py-20 md:py-24 px-6 overflow-hidden pat pat-horse">
+<section id="jazdy" class="relative py-20 md:py-24 px-6 overflow-hidden">
+  <ScatterIcons type="horse" />
   <LeafSprig class="w-28 h-44 -left-6 top-10 rotate-12" />
   <LeafSprig class="w-28 h-44 -right-6 bottom-10 -rotate-12 scale-x-[-1]" />
 

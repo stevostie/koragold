@@ -1,4 +1,5 @@
 ---
+import ScatterIcons from './ScatterIcons.astro';
 import LeafSprig from './LeafSprig.astro';
 
 const features = [
@@ -24,7 +25,8 @@ const features = [
 const bar = { wine: 'bg-wine', sage: 'bg-sage', wheat: 'bg-wheat' };
 ---
 
-<section id="o-farme" class="relative py-20 md:py-24 px-6 overflow-hidden pat pat-wheat">
+<section id="o-farme" class="relative py-20 md:py-24 px-6 overflow-hidden">
+  <ScatterIcons type="wheat" />
   <LeafSprig class="w-24 h-40 right-2 top-6 -rotate-12 hidden sm:block" />
 
   <div class="relative max-w-6xl mx-auto">
